@@ -39,4 +39,4 @@ dist
 /docker_volumes
 /build
 /git.properties
-db.sqlite3
+*.sqlite3
