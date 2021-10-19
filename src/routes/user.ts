@@ -1,7 +1,7 @@
-import * as express from "express"
+import Router from "express-promise-router";
 import { User } from "../entity/user";
 import * as userService from "../modules/userService";
-export const userRouter = express.Router();
+export const userRouter = Router();
 
 userRouter.get('/', async (req, res) => {
     const allUsers: User[] = await userService.getAllUsers();
