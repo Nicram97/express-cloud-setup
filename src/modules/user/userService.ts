@@ -1,5 +1,5 @@
-import { User } from "../entity/user";
-import { dbConnection } from "../db/dbService";
+import { User } from "../../entity/user";
+import { dbConnection } from "../../db/dbService";
 
 export const addUser = async (body: {userName: string, description: string}) => {
     const userRepository = dbConnection.getRepository(User);
