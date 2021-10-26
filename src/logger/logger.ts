@@ -7,7 +7,7 @@ export let logger:ReturnType<typeof winston.createLogger>;
 export const initWinstonLogger = async () => {
     logger = winston.createLogger({
         transports: [
-          new winston.transports.Console({handleExceptions: true}),
+          new winston.transports.Console(),
           new LogstashTransport({
             host: "localhost",
             port: 5000,
@@ -18,13 +18,6 @@ export const initWinstonLogger = async () => {
             )
         })
         ],
-        levels: {error : 0},
-        silent: false,
-        handleExceptions: true,
-        level: "error",
-        exceptionHandlers: (obj) => {
-          console.log(obj)
-        },
         format: winston.format.combine(
           winston.format.colorize(),
           winston.format.json()
@@ -33,18 +26,14 @@ export const initWinstonLogger = async () => {
     return logger;
 };
 
-export const winstonLoggerMiddleware = 
-    expressWinston.logger({
-        transports: [
-          new winston.transports.Console(),
-        ],
+export const winstonLoggerMiddleware = (winstonLoggerInstance: winston.Logger) => {
+    const result =  expressWinston.logger({
+        winstonInstance: winstonLoggerInstance,
         meta: true,
         msg: 'HTTP {{req.method}} {{req.url}}',
         expressFormat: true,
-        format: winston.format.combine(
-          winston.format.colorize(),
-          winston.format.json()
-        )
     });
-expressWinston.requestWhitelist.push('body');
-expressWinston.responseWhitelist.push('body');
+  expressWinston.requestWhitelist.push('body');
+  expressWinston.responseWhitelist.push('body');
+  return result;
+}
