@@ -3,12 +3,14 @@ import { globalExceptionsHandlerMiddleware } from "./modules/exceptions/globalEx
 import { initDependencies } from "./modules/init/init"
 import { logger, winstonLoggerMiddleware } from "./logger/logger";
 import { mainRouter } from "./routes/main";
+import { requestTimeMiddleware } from "./modules/metrics/requestTimeMiddleware";
 
 async function main() {
     await initDependencies();
     
     const app = express();
     app.use(winstonLoggerMiddleware(logger));
+    app.use(requestTimeMiddleware);
     app.use(express.json());
     app.use('/', mainRouter);
     
