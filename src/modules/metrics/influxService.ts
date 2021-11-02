@@ -1,24 +1,34 @@
 import { PrometheusService } from "./prometheusService"
 import * as promClient from "prom-client"
 import {InfluxDB, Point, WriteApi} from '@influxdata/influxdb-client'
+import { ConfigService } from "../../config/configService";
 
-const influxToken = 'QkVtUb_mYxvP29F0l6DTt8jnJrchns88O_a1AXJSi72zPOcRpVwIySXmBOcCBqdo1utcT2feC34EsTMPgs4SHw==';
-const org = 'test';
-const bucketId = '9082a1478e9e781c';
-const influxDB = new InfluxDB({url: 'http://localhost:8086',token: influxToken});
-
+export let influxDB: InfluxDB
 export let prometheusMetricsIntervalId;
+
+export const initInfluxConnection = (): void => {
+    if (ConfigService.config.influxClient) {
+        influxDB = new InfluxDB({
+            url: ConfigService.config.influxClient.INFLUX_URL,
+            token: ConfigService.config.influxClient.INFLUX_ACCESS_TOKEN
+            });
+        sendPrometheusMetricsInterval(ConfigService.config.influxClient.INFLUX_SEND_INTERVAL_MS)
+    }
+}
 export const sendPrometheusMetricsInterval = (time: number) => {
     prometheusMetricsIntervalId = setInterval(sendPrometheusMetricsToInflux, time);
 }
 
 export const deletePrometheusMetricsInterval = (intervalId: number) => {
-    clearInterval(prometheusMetricsIntervalId);
+    clearInterval(intervalId);
 }
 
-export const sendPrometheusMetricsToInflux = async () => {
+const sendPrometheusMetricsToInflux = async () => {
     const influxPoints: Point[] = parsePrometheusJsonToInflux(await PrometheusService.getMetricsJSON());
-    const writeAPI: WriteApi = influxDB.getWriteApi(org, bucketId);
+    const writeAPI: WriteApi = influxDB.getWriteApi(
+        ConfigService.config.influxClient.INFLUX_ORGANIZATION,
+        ConfigService.config.influxClient.INFLUX_BUCKET_ID
+        );
     writeAPI.writePoints(influxPoints);
     await writeAPI.close();
 }

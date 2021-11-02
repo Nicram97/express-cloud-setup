@@ -1,19 +1,16 @@
-import { Connection, createConnection } from "typeorm";
+import { Connection, ConnectionOptions, createConnection } from "typeorm";
+import { ConfigService } from "../config/configService";
 
 export let dbConnection: Connection;
 export const initDb = async () => {
     dbConnection = await createConnection({
         type: "sqlite",
-        database: "test.db.sqlite3",
-        entities: [
-            "./src/entity/**/*.ts"
-        ],
-        migrations: [
-            "./src/migrations/**/*.ts"
-        ],
+        database: ConfigService.config.sqlite.DB_DATABASE,
+        entities: ConfigService.config.sqlite.DB_ENTITIES,
+        migrations: ConfigService.config.sqlite.DB_MIGRATIONS,
         cli: {
-            migrationsDir: "./src/migrations",
-          },
+            migrationsDir: ConfigService.config.sqlite.DB_CLI,
+        },
         synchronize: false,
         logging: false,
         name: 'sqliteConnectionName'

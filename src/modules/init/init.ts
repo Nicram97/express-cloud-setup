@@ -1,9 +1,11 @@
+import { ConfigService } from "../../config/configService";
 import { initDb } from "../../db/dbService"
 import { initWinstonLogger } from "../../logger/logger";
-import { sendPrometheusMetricsInterval } from "../metrics/influxService";
+import { initInfluxConnection } from "../metrics/influxService";
 
 export const initDependencies = async () => {
+    ConfigService.loadConfigFile();
     await initDb();
     await initWinstonLogger();
-    sendPrometheusMetricsInterval(10 * 1000);
+    initInfluxConnection();
 }

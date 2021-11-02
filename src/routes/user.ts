@@ -3,6 +3,15 @@ import { User } from "../entity/user";
 import * as userService from "../modules/user/userService";
 export const userRouter = Router();
 
+/**
+ * @openapi
+ * /:
+ *  get:
+ *      description: Test
+ *      responses:
+ *          200:
+ *              description: Returns present users.
+ */
 userRouter.get('/', async (req, res) => {
     const allUsers: User[] = await userService.getAllUsers();
     res.json(allUsers);
