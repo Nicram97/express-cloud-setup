@@ -33,6 +33,7 @@
     "fs-extra": "^10.0.0",
     "js-yaml": "^4.1.0",
     "logform": "^2.3.0",
+    "node-cache": "^5.1.2",
     "node-git-info": "^1.1.0",
     "pg": "^8.7.1",
     "prom-client": "^14.0.0",

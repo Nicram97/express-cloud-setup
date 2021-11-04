@@ -23,6 +23,6 @@ userRouter.get('/:id', async (req, res) => {
 });
 
 userRouter.post('/', async (req, res) => {
-    await userService.addUser(req.body);
-    res.send('User created');
+    const result: User = await userService.addUser(req.body);
+    res.json(result);
 });
