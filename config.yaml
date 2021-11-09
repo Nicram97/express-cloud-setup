@@ -11,10 +11,11 @@ server:
 #   INFLUX_BUCKET_ID: 9082a1478e9e781c
 
 database:
+  DB_HOST: postgres-db-postgresql
   DB_PORT: 5432
-  DB_USERNAME: nodetest
-  DB_PASSWORD: nodetest
-  DB_DATABASE: nodetest
+  DB_USERNAME: postgres
+  DB_PASSWORD: e7vOso99Qy
+  DB_DATABASE: postgres
   DB_ENTITIES: [./src/entity/**/*.ts]
   DB_MIGRATIONS: [./src/migrations/**/*.ts]
   DB_CLI: ./src/migrations

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-deployment
+spec:
+  selector:
+    matchLabels:
+      app: express-cloud-setup
+  template:
+    metadata:
+      labels:
+        app: express-cloud-setup
+    spec:
+      containers:
+      - name: express-cloud-setup
+        image: express-cloud-setup
+        imagePullPolicy: Never
+        ports:
+            - containerPort: 3000
+      restartPolicy: Always

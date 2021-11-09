@@ -16,10 +16,11 @@ const dbConfig = () => {
             logging: false
         };
     } else {
+        console.log(config.database);
         return {
             type: 'postgres',
-            host: 'localhost',
-            port: config.DB_PORT,
+            host: config.database.DB_HOST,
+            port: config.database.DB_PORT,
             username: config.database.DB_USERNAME,
             password: config.database.DB_PASSWORD,
             database: config.database.DB_DATABASE,

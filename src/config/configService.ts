@@ -9,6 +9,7 @@ export class ConfigService {
         try {
             const configPath = path.resolve(__dirname, '../../config.yaml');
             this.config = yaml.load(fs.readFileSync(configPath, 'utf-8'));
+            console.log('siema', this.config);
             return this.config;
         } catch(e) {
             throw new Error('Couldnt load config file');
