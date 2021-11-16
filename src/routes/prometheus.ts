@@ -8,5 +8,5 @@ prometheusRouter.get('/metricsAsJson', async (req, res) => {
 });
 
 prometheusRouter.get('/metricsAsString', async (req, res) => {
-    res.json(await PrometheusService.getMetricsAsString());
+    res.send(await PrometheusService.getMetricsAsString());
 });

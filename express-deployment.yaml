@@ -10,6 +10,10 @@ spec:
     metadata:
       labels:
         app: express-cloud-setup
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '3000'
+        prometheus.io/path: '/prometheus/metricsAsString'
     spec:
       containers:
       - name: express-cloud-setup
