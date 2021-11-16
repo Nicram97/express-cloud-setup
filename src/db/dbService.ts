@@ -20,7 +20,7 @@ export const initDb = async () => {
     } else if (ConfigService.config.database) {
         connectionOptions = {
             type: 'postgres',
-            host: 'localhost',
+            host: ConfigService.config.database.DB_HOST,
             port: ConfigService.config.database.DB_PORT,
             username: ConfigService.config.database.DB_USERNAME,
             password: ConfigService.config.database.DB_PASSWORD,

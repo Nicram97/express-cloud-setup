@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ecs-service
+  name: express-cloud-setup
 spec:
   selector:
     app: express-cloud-setup
