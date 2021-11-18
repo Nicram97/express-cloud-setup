@@ -1,5 +1,13 @@
 import { Connection, ConnectionOptions, createConnection } from "typeorm";
 import { ConfigService } from "../config/configService";
+import * as promClient from "prom-client"
+
+export const connectionsNumberMetric = new promClient.Summary({
+    name: 'opened_connections',
+    help: 'Number of opened connections in database',
+    labelNames: ['opened'],
+    aggregator: 'omit',
+  });
 
 export let dbConnection: Connection;
 export const initDb = async () => {
@@ -36,4 +44,8 @@ export const initDb = async () => {
     }
     dbConnection = await createConnection(connectionOptions);
     return dbConnection;
+}
+
+export const getPostgresDbPoolSize = (): number => {
+    return (dbConnection.driver as any).postgres.Pool.length;
 }
