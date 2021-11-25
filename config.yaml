@@ -15,7 +15,7 @@ database:
   DB_PORT: 5432
   DB_USERNAME: nodetest
   DB_PASSWORD: nodetest
-  DB_DATABASE: postgres
+  DB_DATABASE: nodetest
   DB_ENTITIES: [./src/entity/**/*.ts]
   DB_MIGRATIONS: [./src/migrations/**/*.ts]
   DB_CLI: ./src/migrations
