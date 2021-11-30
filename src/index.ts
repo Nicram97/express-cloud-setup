@@ -5,7 +5,7 @@ import { logger, winstonLoggerMiddleware } from "./logger/logger";
 import { mainRouter } from "./routes/main";
 import { requestTimeMiddleware } from "./modules/metrics/requestTimeMiddleware";
 
-async function main() {
+export async function main() {
     await initDependencies();
     
     const app = express();
@@ -18,9 +18,10 @@ async function main() {
         res.send('Hello World');
     });
     
-    app.listen(3000);
+    const server = app.listen(3000);
     console.log('Listening on port 3000')
     app.use(globalExceptionsHandlerMiddleware);
+    return server;
 }
 
 main();
