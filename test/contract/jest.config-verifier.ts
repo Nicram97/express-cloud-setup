@@ -1,9 +1,8 @@
 import type {Config} from '@jest/types';
 
 const config: Config.InitialOptions = {
-    testEnvironment: "node",
     verbose: true,
-    testRegex: '.*\\.contract-spec\\.ts$',
+    testRegex: '.*\\.contract-verifier-spec\\.ts$',
     transform: {
       '^.+\\.(t|j)s$': 'ts-jest',
     },

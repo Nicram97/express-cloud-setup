@@ -10,6 +10,7 @@
     "test": "jest --config ./test/unit/jest.config.ts",
     "test:e2e": "jest --config ./test/e2e/jest.config.ts",
     "test:contract": "jest --config ./test/contract/jest.config.ts",
+    "test:contract-verifier": "jest --config ./test/contract/jest.config-verifier.ts",
     "test:watch": "npm run test:e2e -- --watch",
     "test:coverage": "npm run test -- --coverage",
     "saverepoinfo": "node-git-info"
@@ -44,6 +45,7 @@
     "pg": "^8.7.1",
     "prom-client": "^14.0.0",
     "sqlite3": "^5.0.2",
+    "supertest": "^6.1.6",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6",
     "ts-jest": "^27.0.7",

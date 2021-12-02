@@ -9,7 +9,7 @@ function getRandomInt(max: number): number {
     return Math.floor(Math.random() * max);
 }
 
-carsRouter.get('/', async (req, res): Car => {
+carsRouter.get('/', async (req, res): Promise<void> => {
     try {
     const subserviceData = ConfigService.config.subservice;
     const carsJsonRequest = await axios.get(`${subserviceData.URL}:${subserviceData.PORT}`);
