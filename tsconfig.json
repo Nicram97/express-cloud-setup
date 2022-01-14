@@ -9,8 +9,10 @@
       "resolveJsonModule": true,
       "declaration": false,
       "outDir": "dist/",
+      "skipLibCheck": true,
     },
     "include": [
       "."
-    ]
+    ],
+    "exclude": ["node_modules"],
   }
