@@ -16,9 +16,9 @@ server:
 #   DB_USERNAME: nodetest
 #   DB_PASSWORD: nodetest
 #   DB_DATABASE: nodetest
-#   DB_ENTITIES: [./src/entity/**/*.ts]
-#   DB_MIGRATIONS: [./src/migrations/**/*.ts]
-#   DB_CLI: ./src/migrations
+#   DB_ENTITIES: ['./src/**/*.entity{.ts,.js}']
+#   DB_MIGRATIONS: ['./src/migrations/**/*{.ts,.js}']
+#   DB_CLI: './src/migrations'
 
 # logstash:
 #   LOGSTASH_HOST: localhost
@@ -27,9 +27,9 @@ server:
 
 sqlite:
   DB_DATABASE: test.db.sqlite3
-  DB_ENTITIES: [./src/entity/**/*.ts]
-  DB_MIGRATIONS: [./src/migrations/**/*.ts]
-  DB_CLI: ./src/migrations
+  DB_ENTITIES: ['./src/**/*.entity{.ts,.js}']
+  DB_MIGRATIONS: ['./src/migrations/**/*{.ts,.js}']
+  DB_CLI: './src/migrations'
 
 subservice:
   URL: http://localhost

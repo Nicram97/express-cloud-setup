@@ -1,4 +1,4 @@
-import { User } from "../../entity/user";
+import { User } from "../../entity/user.entity";
 import { dbConnection } from "../../db/dbService";
 import { Cache } from "../../cache/cacheService";
 import { logger } from "../../logger/logger";

@@ -1,5 +1,5 @@
 import Router from "express-promise-router";
-import { User } from "../entity/user";
+import { User } from "../entity/user.entity";
 import * as userService from "../modules/user/userService";
 export const userRouter = Router();
 

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npm run prebuild && tsc -p . && && cp -r ./config.yaml ./dist",
+    "build": "npm run prebuild && tsc -p . && cp -r ./config.yaml ./dist",
     "start": "ts-node ./src/index.ts",
+    "start:prod": "cd dist && node src/index",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "test": "jest --config ./test/unit/jest.config.ts",
     "test:e2e": "jest --config ./test/e2e/jest.config.ts",

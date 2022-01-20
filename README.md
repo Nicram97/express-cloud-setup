@@ -11,7 +11,7 @@ You can only run 1 database at a time (SQLite or Postgres)
 <h3>How-To</h3>
 <p>Start the app</p>
 Execute "npm run start"
-
+If You are using VS-code You can just use launch.json from .vscode folder
 
 <p>To debug the app</p>
 Execute "npm run start:debug" or use launch.json
@@ -33,6 +33,8 @@ Execute "npm run test:contract"
 <p>To verify contract tests</p>
 Execute "npm run test:contract-verifier"
 
+<p>Run the simplified app in docker</p>
+To run the most basic configuration of the app + postgres db, You can use docker-compose.yml. For the app to work correctly when containers are up please create and run migrations from the localhost or add script to do so.
 
 <p></p>
 <h4><b>Deploy app to kubernetes</b></h4>
