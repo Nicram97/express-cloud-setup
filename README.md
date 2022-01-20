@@ -36,6 +36,10 @@ Execute "npm run test:contract-verifier"
 <p>Run the simplified app in docker</p>
 To run the most basic configuration of the app + postgres db, You can use docker-compose.yml. For the app to work correctly when containers are up please create and run migrations from the localhost or add script to do so.
 
+Command : "docker-compose up" or "docker-compose up --build" if You want to rebuild this app image (if it is present).
+
+To run everything in docker You have to adjust docker-compose.yml 
+
 <p></p>
 <h4><b>Deploy app to kubernetes</b></h4>
 <p>
